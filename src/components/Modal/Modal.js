@@ -1,20 +1,21 @@
-import React, { Component } from "react";
-import styles from "./Modal.module.css";
+import React, { Component } from 'react';
+import styles from './Modal.module.css';
+import PropTypes from 'prop-types';
 
 class Modal extends Component {
   componentDidMount() {
-    window.addEventListener("keydown", this.handleKeyDownEsc);
+    window.addEventListener('keydown', this.handleKeyDownEsc);
   }
   componentWillUnmount() {
-    window.removeEventListener("keydown", this.handleKeyDownEsc);
+    window.removeEventListener('keydown', this.handleKeyDownEsc);
   }
-  handleKeyDownEsc = (e) => {
+  handleKeyDownEsc = e => {
     const { closeModal } = this.props;
-    if (e.code === "Escape") {
+    if (e.code === 'Escape') {
       closeModal();
     }
   };
-  handleOverlayClick = (e) => {
+  handleOverlayClick = e => {
     if (e.target === e.currentTarget) {
       this.props.closeModal();
     }
@@ -30,4 +31,11 @@ class Modal extends Component {
     );
   }
 }
+
+Modal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  largeImg: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+};
+
 export default Modal;
