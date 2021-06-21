@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import styles from "./Modal.module.css";
 
 class Modal extends Component {
   componentDidMount() {
@@ -21,8 +22,8 @@ class Modal extends Component {
   render() {
     const { largeImg, alt } = this.props;
     return (
-      <div className="Overlay" onClick={this.handleOverlayClick}>
-        <div className="Modal">
+      <div className={styles.Overlay} onClick={this.handleOverlayClick}>
+        <div className={styles.Modal}>
           <img src={largeImg} alt={alt} />
         </div>
       </div>

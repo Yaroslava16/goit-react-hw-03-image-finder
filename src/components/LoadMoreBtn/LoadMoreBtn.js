@@ -1,6 +1,8 @@
+import styles from "./LoadMoreBtn.module.css";
+
 const LoadMore = ({ onChange }) => {
   return (
-    <button className={"Button"} onClick={onChange} type="button">
+    <button className={styles.Button} onClick={onChange} type="button">
       load more
     </button>
   );
