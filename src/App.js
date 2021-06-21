@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 
 import ApiServices from "./components/services/images-api";
-import Searchbar from "./components/Searchbar/Searchbar";
-import ImageGallery from "./components/ImageGallery/ImageGallery";
-import ImageGalleryItem from "./components/ImageGalleryItem/ImageGalleryItem";
-import Modal from "./components/Modal/Modal";
-import Loader from "./components/Loader/Loader";
-import LoadMore from "./components/LoadMoreBtn/LoadMoreBtn";
+import Searchbar from "./components/Searchbar";
+import ImageGallery from "./components/ImageGallery";
+import Modal from "./components/Modal";
+import Loader from "./components/Loader";
+import LoadMore from "./components/LoadMoreBtn";
 import styles from "../src/App.module.css";
 
 class App extends Component {
@@ -67,9 +66,11 @@ class App extends Component {
     return (
       <div className={styles.App}>
         <Searchbar onSubmit={this.onChangeQuery} />
-        <ImageGallery onImgClick={this.getLargeImg}>
-          <ImageGalleryItem onClick={this.toggleModal} images={images} />
-        </ImageGallery>
+        <ImageGallery
+          onImgClick={this.getLargeImg}
+          onClick={this.toggleModal}
+          images={images}
+        />
         {loading && <Loader />}
         {LoadMoreBtn && !loading && <LoadMore onChange={this.fetchImages} />}
         {showModal && (
